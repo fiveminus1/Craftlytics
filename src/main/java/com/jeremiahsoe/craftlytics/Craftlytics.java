@@ -2,8 +2,6 @@ package com.jeremiahsoe.craftlytics;
 
 import com.jeremiahsoe.craftlytics.database.DatabaseManager;
 import com.jeremiahsoe.craftlytics.listeners.PlayerJoinListener;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
