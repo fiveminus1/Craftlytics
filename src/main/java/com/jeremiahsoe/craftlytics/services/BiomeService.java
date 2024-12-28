@@ -13,7 +13,7 @@ public class BiomeService {
         this.databaseManager = DatabaseManager.getInstance();
     }
 
-    public void logBiomeExploration(String playerUuid, String biomeName, String location) throws SQLException {
+    public void logBiomeExploration(String playerUuid, String biomeName, String location) {
         String sql = "INSERT INTO Biomes_Explored (player_uuid, biome_name, location) VALUES (?,?,?)";
         try(Connection conn = databaseManager.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql)) {
