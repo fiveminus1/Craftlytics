@@ -20,15 +20,6 @@ public final class Craftlytics extends JavaPlugin implements Listener {
 
     }
 
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event){
-        System.out.println("logging player move event");
-        String playerUuid = event.getPlayer().getUniqueId().toString();
-        String biomeName = event.getTo().getBlock().getBiome().toString();
-        String location = event.getTo().getBlockX() + "," +  event.getTo().getBlockY() + "," + event.getTo().getBlockZ();
-
-        databaseManager.logBiomeExploration(playerUuid, biomeName, location);
-    }
 
     @Override
     public void onDisable() {
