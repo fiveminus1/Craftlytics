@@ -43,4 +43,20 @@ public class PlayerService {
             e.printStackTrace(); //can replace logging later
         }
     }
+
+    public void logPlayerKill(String playerUuid, String killedPlayerUuid){
+        String sql = "INSERT INTO Player_Kills (player_uuid, killed_player_uuid) VALUES (?, ?)";
+        try(Connection conn = databaseManager.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql)
+        ){
+            statement.setString(1, playerUuid);
+            statement.setString(2, killedPlayerUuid);
+            statement.executeUpdate();
+            System.out.println("Player kill detected");
+        }
+        catch(SQLException e){
+            e.printStackTrace();;
+        }
+
+    }
 }

@@ -27,7 +27,7 @@ public class PlayerKillListener implements Listener{
 
             if(damager instanceof Player){
                 Player killer = (Player) damager;
-                logPlayerKill(killer.getUniqueId(), killedPlayer.getUniqueId());
+                playerService.logPlayerKill(killer.getUniqueId().toString(), killedPlayer.getUniqueId().toString());
             }
         }
 

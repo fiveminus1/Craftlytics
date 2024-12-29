@@ -3,6 +3,7 @@ package com.jeremiahsoe.craftlytics;
 import com.jeremiahsoe.craftlytics.database.DatabaseManager;
 import com.jeremiahsoe.craftlytics.listeners.BiomeExplorationListener;
 import com.jeremiahsoe.craftlytics.listeners.PlayerJoinListener;
+import com.jeremiahsoe.craftlytics.listeners.PlayerKillListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -17,6 +18,7 @@ public final class Craftlytics extends JavaPlugin{
 
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BiomeExplorationListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerKillListener(), this);
 
         getLogger().info("Craftlytics has been enabled!");
     }

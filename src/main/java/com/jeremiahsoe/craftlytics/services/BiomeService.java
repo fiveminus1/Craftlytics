@@ -16,7 +16,8 @@ public class BiomeService {
     public void logBiomeExploration(String playerUuid, String biomeName, String location) {
         String sql = "INSERT INTO Biomes_Explored (player_uuid, biome_name, location) VALUES (?,?,?)";
         try(Connection conn = databaseManager.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql)) {
+            PreparedStatement statement = conn.prepareStatement(sql)
+        ) {
             statement.setString(1, playerUuid);
             statement.setString(2, biomeName);
             statement.setString(3, location);
