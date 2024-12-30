@@ -1,7 +1,6 @@
 package com.jeremiahsoe.craftlytics.listeners;
 
 import com.jeremiahsoe.craftlytics.api_client.APIClient;
-import com.jeremiahsoe.craftlytics.services.PlayerService;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,8 +21,7 @@ public class PlayerJoinListener implements Listener {
         String playerUuid = player.getUniqueId().toString();
         String playerName = player.getName();
 
-        Bukkit.getScheduler().runTaskAsynchronously(player.getServer().getPluginManager().getPlugin("Craftlytics"), () -> {
-            apiClient.sendPlayerStats(playerUuid, playerName);
-        });
+        Bukkit.getScheduler().runTaskAsynchronously(player.getServer().getPluginManager().getPlugin("Craftlytics"),
+                () -> apiClient.sendPlayerStats(playerUuid, playerName));
     }
 }

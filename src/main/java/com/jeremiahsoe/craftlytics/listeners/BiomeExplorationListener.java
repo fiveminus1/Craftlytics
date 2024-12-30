@@ -1,5 +1,6 @@
 package com.jeremiahsoe.craftlytics.listeners;
 
+import com.jeremiahsoe.craftlytics.api_client.APIClient;
 import com.jeremiahsoe.craftlytics.services.BiomeService;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -13,13 +14,12 @@ import java.util.Map;
 import java.util.UUID;
 
 public class BiomeExplorationListener implements Listener {
-    private final BiomeService biomeService;
+    private final APIClient apiClient;
     private final Map<UUID, String> playerBiomes;
 
     public BiomeExplorationListener(){
-        this.biomeService = new BiomeService();
+        this.apiClient = new APIClient();
         this.playerBiomes = new HashMap<>();
-
     }
 
     @EventHandler
@@ -40,9 +40,8 @@ public class BiomeExplorationListener implements Listener {
             playerBiomes.put(playerUuid, currentBiome);
 
             String location = to.getBlockX() + ", " + to.getBlockY() + ", " + to.getBlockZ();
-            Bukkit.getScheduler().runTaskAsynchronously(player.getServer().getPluginManager().getPlugin("Craftlytics"), () -> {
-               biomeService.logBiomeExploration(playerUuid.toString(), currentBiome, location);
-            });
+            Bukkit.getScheduler().runTaskAsynchronously(player.getServer().getPluginManager().getPlugin("Craftlytics"),
+                    () -> apiClient.logBiomeExploration(playerUuid.toString(), currentBiome, location));
         }
 
     }
