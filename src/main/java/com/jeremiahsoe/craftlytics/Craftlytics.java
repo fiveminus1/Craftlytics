@@ -8,7 +8,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 public final class Craftlytics extends JavaPlugin{
-
     private DatabaseManager databaseManager;
 
     @Override
@@ -23,7 +22,6 @@ public final class Craftlytics extends JavaPlugin{
         getLogger().info("Craftlytics has been enabled!");
     }
 
-
     @Override
     public void onDisable() {
         // Plugin shutdown logic
@@ -32,4 +30,6 @@ public final class Craftlytics extends JavaPlugin{
             getLogger().info("Craftlytics has been disabled!");
         }
     }
+
+
 }
