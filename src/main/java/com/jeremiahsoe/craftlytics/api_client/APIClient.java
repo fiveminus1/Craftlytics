@@ -48,4 +48,22 @@ public class APIClient{
             e.printStackTrace();
         }
     }
+
+    public void logPlayerKill(String playerUuid, String killedPlayerUuid){
+        String url = API_BASE_URL + "/player-kills?playerUuid=" + URLEncoder.encode(playerUuid, StandardCharsets.UTF_8)
+                + "&killedPlayerUuid=" + URLEncoder.encode(playerUuid, StandardCharsets.UTF_8);
+
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()){
+            HttpPost request = new HttpPost(url);
+            request.setHeader("Content-Type", "application/json");
+
+            httpClient.execute(request, response -> {
+                System.out.println("Response: " + EntityUtils.toString(response.getEntity()));
+                return null;
+            });
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }

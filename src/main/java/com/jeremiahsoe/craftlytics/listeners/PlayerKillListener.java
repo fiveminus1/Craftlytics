@@ -1,6 +1,7 @@
 package com.jeremiahsoe.craftlytics.listeners;
 
-import com.jeremiahsoe.craftlytics.services.PlayerService;
+import com.jeremiahsoe.craftlytics.api_client.APIClient;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,10 +11,10 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerKillListener implements Listener{
-    private final PlayerService playerService;
+    private final APIClient apiClient;
 
     public PlayerKillListener(){
-        this.playerService = new PlayerService();
+        this.apiClient = new APIClient();
     }
 
     @EventHandler
@@ -27,7 +28,8 @@ public class PlayerKillListener implements Listener{
 
             if(damager instanceof Player){
                 Player killer = (Player) damager;
-                playerService.logPlayerKill(killer.getUniqueId().toString(), killedPlayer.getUniqueId().toString());
+                Bukkit.getScheduler().runTaskAsynchronously(killedPlayer.getServer().getPluginManager().getPlugin("Craftlytics"),
+                        () -> apiClient.logPlayerKill(killer.getUniqueId().toString(), killedPlayer.getUniqueId().toString()));
             }
         }
 
