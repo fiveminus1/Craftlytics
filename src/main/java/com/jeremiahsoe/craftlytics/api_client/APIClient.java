@@ -31,7 +31,7 @@ public class APIClient{
     }
 
     public void logBiomeExploration(String playerUuid, String biomeName, String location){
-        String url = API_BASE_URL + "/biomes_explored?playerUuid=" + URLEncoder.encode(playerUuid, StandardCharsets.UTF_8)
+        String url = API_BASE_URL + "/biomes-explored?playerUuid=" + URLEncoder.encode(playerUuid, StandardCharsets.UTF_8)
                 + "&biomeName=" + biomeName
                 + "&location=" + URLEncoder.encode(location, StandardCharsets.UTF_8);
 
